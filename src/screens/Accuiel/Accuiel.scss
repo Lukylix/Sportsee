@@ -1,0 +1,13 @@
+#accuielMain {
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .btn {
+    border-radius: 5px;
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+  }
+}

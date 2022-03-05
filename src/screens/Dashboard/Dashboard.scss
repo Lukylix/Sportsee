@@ -1,0 +1,18 @@
+.red {
+  color: #ff0000;
+}
+
+main {
+  padding: 70px 100px;
+  h2 {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+  p {
+    font-size: 18px;
+  }
+  #infos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
