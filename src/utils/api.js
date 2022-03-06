@@ -32,7 +32,7 @@ async function getUser(id) {
  */
 async function getUserActivity(id) {
   try {
-    const res = await axios.get(`${host}:${port}/user/${id}/activity`);
+    const res = await axios.get(`http://${host}:${port}/user/${id}/activity`);
     return { data: res.data.data, error: null };
   } catch (error) {
     return { data: null, error: error.message };
@@ -53,7 +53,7 @@ async function getUserActivity(id) {
  */
 async function getUserAverageSession(id) {
   try {
-    const res = await axios.get(`${host}:${port}/user/${id}/average-sessions`);
+    const res = await axios.get(`http://${host}:${port}/user/${id}/average-sessions`);
     return { data: res.data.data, error: null };
   } catch (error) {
     return { data: null, error: error.message };
@@ -74,7 +74,7 @@ async function getUserAverageSession(id) {
  */
 async function getUserPerformance(id) {
   try {
-    const res = await axios.get(`${host}:${port}/user/${id}/performance`);
+    const res = await axios.get(`http://${host}:${port}/user/${id}/performance`);
     return { data: res.data.data, error: null };
   } catch (error) {
     return { data: null, error: error.message };
