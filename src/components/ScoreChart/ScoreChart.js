@@ -18,7 +18,7 @@ function ScoreChart({ score }) {
           barSize={10}
           background={{ fill: "white" }}
         >
-          <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
           <RadialBar dataKey="score" cornerRadius={10} />
         </RadialBarChart>
       </ResponsiveContainer>

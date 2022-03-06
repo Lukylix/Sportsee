@@ -8,9 +8,19 @@
     font-size: 15px;
     color: #ff8080;
     line-height: 24px;
+    width: 80%;
   }
   .days {
     display: flex;
     color: white;
+  }
+}
+
+@media screen and(max-width: 1440px) {
+  .sessionLineChart {
+    &__header {
+      top: 15px;
+      left: 15px;
+    }
   }
 }

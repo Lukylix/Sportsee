@@ -2,7 +2,7 @@
   background-color: #fbfbfb;
   border-radius: 5px;
   padding: 24px;
-  .activityBarchart__header {
+  &__header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 65px;
@@ -28,5 +28,13 @@
   }
   &--black {
     background-color: #282d30;
+  }
+}
+
+@media screen and(max-width: 1440px) {
+  .activityBarChart {
+    &__header {
+      margin-bottom: 30px;
+    }
   }
 }

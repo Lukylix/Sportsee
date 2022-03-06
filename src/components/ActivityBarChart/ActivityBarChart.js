@@ -33,7 +33,7 @@ function ActivityBarChart() {
 
   return (
     <div className="activityBarChart">
-      <div className="activityBarchart__header">
+      <div className="activityBarChart__header">
         <h3>Activité quotidienne</h3>
         <p>
           <span className="dot dot--black"></span>Poids (kg)
