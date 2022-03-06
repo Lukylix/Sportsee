@@ -44,7 +44,7 @@ function ActivityBarChart() {
           <span className="dot dot--red"></span>Calories brûlées (kCal)
         </p>
       </div>
-      <ResponsiveContainer width="100%" aspect={2.6}>
+      <ResponsiveContainer width="100%" aspect={3}>
         <BarChart
           width={500}
           height={300}

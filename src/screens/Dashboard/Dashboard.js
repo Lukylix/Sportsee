@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import ActivityBarChart from "../../components/ActivityBarChart";
+import MiniCard from "../../components/MiniCard";
+import { ReactComponent as Energy } from "../../assets/energy.svg";
+import { ReactComponent as Chicken } from "../../assets/chicken.svg";
+import { ReactComponent as Apple } from "../../assets/apple.svg";
+import { ReactComponent as CheeseBurger } from "../../assets/cheeseburger.svg";
 
 import "./Dashboard.scss";
 
@@ -10,6 +15,10 @@ function Dashboard() {
   const [user, setUser] = useState();
   const [error, setError] = useState();
   const navigate = useNavigate();
+
+  const addCommaCalories = (value) => {
+    return value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
+  };
 
   useEffect(() => {
     (async () => {
@@ -33,6 +42,33 @@ function Dashboard() {
       </header>
       <section id="infos" aria-label="Graphiques et infos">
         <ActivityBarChart />
+        <div className="miniCardContainer">
+          <MiniCard
+            icon={<Energy />}
+            iconContainerStyle={{ backgroundColor: "#FBEAEA" }}
+            title={`${addCommaCalories(user?.keyData?.calorieCount)}Kcal`}
+            legend="Calories"
+          />
+          <MiniCard
+            icon={<Chicken />}
+            iconContainerStyle={{ backgroundColor: "#E9F4FB" }}
+            title={`${user?.keyData?.proteinCount}g`}
+            legend="Proteines"
+          />
+          <MiniCard
+            icon={<Apple />}
+            iconContainerStyle={{ backgroundColor: "#FAF6E5" }}
+            title={`${user?.keyData?.carbohydrateCount}g`}
+            legend="Glucides"
+          />
+          <MiniCard
+            icon={<CheeseBurger />}
+            iconContainerStyle={{ backgroundColor: "#FBEAEF" }}
+            title={`${user?.keyData?.lipidCount}g`}
+            legend="Lipides"
+          />
+        </div>
+        <div className="temp"></div>
       </section>
     </main>
   );

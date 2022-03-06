@@ -17,9 +17,20 @@ main {
   #infos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "activity activity activity cards" "temp temp temp cards";
     gap: 30px;
     .activityBarChart {
-      grid-column: 1 / 4;
+      grid-area: activity;
+    }
+    .miniCardContainer {
+      grid-area: cards;
+      display: grid;
+      gap: 40px;
+      grid-template-rows: repeat(4, 1fr);
+    }
+    .temp {
+      grid-area: temp;
+      height: 263px;
     }
   }
 }

@@ -1,0 +1,29 @@
+.miniCard {
+  display: flex;
+  padding: 0 32px 0 32px;
+  align-items: center;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+
+  &__iconContainer {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin-right: 24px;
+  }
+  &__content {
+    h3 {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 24px;
+    }
+    p {
+      color: #74798c;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
