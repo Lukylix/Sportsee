@@ -1,0 +1,32 @@
+.activityBarChart {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  padding: 24px;
+  .activityBarchart__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 65px;
+    h3 {
+      font-size: 15px;
+    }
+    p {
+      font-size: 12px;
+      font-weight: 500;
+      color: #74798c;
+    }
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 12px 0 32px;
+  &--red {
+    background-color: #e60000;
+  }
+  &--black {
+    background-color: #282d30;
+  }
+}

@@ -4,15 +4,22 @@
 
 main {
   padding: 70px 100px;
-  h2 {
-    font-size: 48px;
-    margin-bottom: 40px;
-  }
-  p {
-    font-size: 18px;
+  header {
+    margin-bottom: 75px;
+    h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+    p {
+      font-size: 18px;
+    }
   }
   #infos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    .activityBarChart {
+      grid-column: 1 / 4;
+    }
   }
 }
