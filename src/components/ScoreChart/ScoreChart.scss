@@ -1,0 +1,40 @@
+.scoreChart {
+  background-color: #fbfbfb;
+  border-radius: 5px;
+  h3 {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: #20253a;
+  }
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 58%;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:before {
+      content: "";
+      float: left;
+      padding-top: 100%;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      line-height: 26px;
+      color: #282d30;
+      span {
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+  }
+}

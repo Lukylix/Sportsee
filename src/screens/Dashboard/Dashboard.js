@@ -11,6 +11,7 @@ import SessionLineChart from "../../components/SessionLineChart";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 
 import "./Dashboard.scss";
+import ScoreChart from "../../components/ScoreChart";
 
 function Dashboard() {
   const { id } = useParams();
@@ -72,7 +73,7 @@ function Dashboard() {
         </div>
         <SessionLineChart />
         <PerformanceRadarChart />
-        <div className="temp"></div>
+        <ScoreChart score={user?.todayScore || user?.score} />
       </section>
     </main>
   );
