@@ -17,7 +17,7 @@ main {
   #infos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "activity activity activity cards" "session temp temp cards";
+    grid-template-areas: "activity activity activity cards" "session performance temp cards";
     gap: 30px;
     .activityBarChart {
       grid-area: activity;
@@ -30,6 +30,9 @@ main {
     }
     .sessionLineChart {
       grid-area: session;
+    }
+    .performanceRaderChart {
+      grid-area: performance;
     }
     .temp {
       grid-area: temp;

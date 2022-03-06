@@ -7,9 +7,10 @@ import { ReactComponent as Energy } from "../../assets/energy.svg";
 import { ReactComponent as Chicken } from "../../assets/chicken.svg";
 import { ReactComponent as Apple } from "../../assets/apple.svg";
 import { ReactComponent as CheeseBurger } from "../../assets/cheeseburger.svg";
+import SessionLineChart from "../../components/SessionLineChart";
+import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 
 import "./Dashboard.scss";
-import SessionLineChart from "../../components/SessionLineChart";
 
 function Dashboard() {
   const { id } = useParams();
@@ -70,6 +71,7 @@ function Dashboard() {
           />
         </div>
         <SessionLineChart />
+        <PerformanceRadarChart />
         <div className="temp"></div>
       </section>
     </main>
