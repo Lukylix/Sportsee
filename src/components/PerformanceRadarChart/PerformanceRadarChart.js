@@ -5,9 +5,16 @@ import { ResponsiveContainer, PolarGrid, PolarAngleAxis, Radar, RadarChart } fro
 
 import "./PerformanceRadarChart.scss";
 
-const capitalize = (s) => {
-  if (typeof s !== "string") return "";
-  return s.charAt(0).toUpperCase() + s.slice(1);
+const translateKind = (kind) => {
+  const dicKind = {
+    cardio: "Cardio",
+    energy: "Energie",
+    endurance: "Endurance",
+    strength: "Force",
+    speed: "Vitesse",
+    intensity: "Intensité",
+  };
+  return dicKind[kind];
 };
 
 function PerformanceRadarChart() {
@@ -37,7 +44,7 @@ function PerformanceRadarChart() {
             <PolarAngleAxis
               dataKey="kind"
               tick={{ fill: "#FFFFFF", fontSize: window?.innerWidth > 1440 ? "12px" : "10px" }}
-              tickFormatter={capitalize}
+              tickFormatter={translateKind}
             />
             <PolarGrid radialLines={false} />
           </RadarChart>
