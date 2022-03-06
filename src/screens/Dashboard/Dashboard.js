@@ -9,6 +9,7 @@ import { ReactComponent as Apple } from "../../assets/apple.svg";
 import { ReactComponent as CheeseBurger } from "../../assets/cheeseburger.svg";
 
 import "./Dashboard.scss";
+import SessionLineChart from "../../components/SessionLineChart";
 
 function Dashboard() {
   const { id } = useParams();
@@ -68,6 +69,7 @@ function Dashboard() {
             legend="Lipides"
           />
         </div>
+        <SessionLineChart />
         <div className="temp"></div>
       </section>
     </main>

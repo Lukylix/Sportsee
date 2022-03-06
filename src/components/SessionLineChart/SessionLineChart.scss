@@ -1,0 +1,16 @@
+.sessionLineChart {
+  background-color: #ff0000;
+  border-radius: 5px;
+  &__header {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 15px;
+    color: #ff8080;
+    line-height: 24px;
+  }
+  .days {
+    display: flex;
+    color: white;
+  }
+}

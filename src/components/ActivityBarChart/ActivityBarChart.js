@@ -5,29 +5,25 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 
 import "./ActivityBarChart.scss";
 
+const formaterTooltip = (value, name) => {
+  const unitDic = {
+    kilogram: "kg",
+    calories: "Kcal",
+  };
+  return [`${value}${unitDic[name]}`];
+};
+
 function ActivityBarChart() {
   const [chartData, setChartData] = useState([]);
   const [error, setError] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const formaterTooltip = (value, name, props) => {
-    const unitDic = {
-      kilogram: "kg",
-      calories: "Kcal",
-    };
-    return [`${value}${unitDic[name]}`];
-  };
-
   useEffect(() => {
     (async () => {
       const { data, error } = await dataProvider.getUserActivity(id);
       setError(error);
-      setChartData(
-        data.sessions.map((session) => {
-          return { kilogram: session.kilogram, calories: session.calories };
-        })
-      );
+      setChartData(data.sessions.map((session) => ({ kilogram: session.kilogram, calories: session.calories })));
     })();
   }, [id]);
 
