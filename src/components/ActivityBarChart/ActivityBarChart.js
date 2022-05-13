@@ -4,6 +4,7 @@ import dataProvider from "../../utils/dataProvider";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
 import "./ActivityBarChart.scss";
+import UserActivity from "../../utils/models/UserActivity";
 
 const formaterTooltip = (value, name) => {
   const unitDic = {
@@ -23,7 +24,10 @@ function ActivityBarChart() {
     (async () => {
       const { data, error } = await dataProvider.getUserActivity(id);
       setError(error);
-      setChartData(data.sessions.map((session) => ({ kilogram: session.kilogram, calories: session.calories })));
+      const userActivity = new UserActivity(data);
+      setChartData(
+        userActivity.sessions.map((session) => ({ kilogram: session.kilogram, calories: session.calories }))
+      );
     })();
   }, [id]);
 
@@ -40,7 +44,7 @@ function ActivityBarChart() {
           <span className="dot dot--red"></span>Calories brûlées (kCal)
         </p>
       </div>
-      <ResponsiveContainer width="100%" aspect={3}>
+      <ResponsiveContainer aspect={4}>
         <BarChart
           width={500}
           height={300}
@@ -53,7 +57,7 @@ function ActivityBarChart() {
         >
           <CartesianGrid vertical={false} />
           <XAxis domain={[1, chartData.length]} axisLine={false} tickLine={false} tickMargin={15} stroke="#9B9EAC" />
-          <YAxis orientation="right" axisLine={false} tickLine={false} tickMargin={45} stroke="#9B9EAC" />
+          <YAxis orientation="right" tickCount={3} axisLine={false} tickLine={false} tickMargin={45} stroke="#9B9EAC" />
           <Tooltip
             formatter={formaterTooltip}
             labelStyle={{ display: "none" }}

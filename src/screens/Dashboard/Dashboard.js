@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
+import User from "../../utils/models/User";
 import ActivityBarChart from "../../components/ActivityBarChart";
 import MiniCard from "../../components/MiniCard";
 import { ReactComponent as Energy } from "../../assets/energy.svg";
@@ -26,7 +27,7 @@ function Dashboard() {
   useEffect(() => {
     (async () => {
       const { data, error } = await dataProvider.getUser(id);
-      setUser(data);
+      setUser(new User(data));
       setError(error);
     })();
   }, [id]);
@@ -73,7 +74,7 @@ function Dashboard() {
         </div>
         <SessionLineChart />
         <PerformanceRadarChart />
-        <ScoreChart score={user?.todayScore || user?.score} />
+        <ScoreChart score={user?.score} />
       </section>
     </main>
   );

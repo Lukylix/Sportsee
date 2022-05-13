@@ -7,7 +7,7 @@ function ScoreChart({ score }) {
   return (
     <div className="scoreChart">
       <h3>Score</h3>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer aspect={1.1}>
         <RadialBarChart
           cx="50%"
           cy="50%"

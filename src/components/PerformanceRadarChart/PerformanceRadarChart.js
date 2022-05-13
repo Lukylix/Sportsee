@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import { ResponsiveContainer, PolarGrid, PolarAngleAxis, Radar, RadarChart } from "recharts";
+import UserPerformance from "../../utils/models/UserPerformance";
 
 import "./PerformanceRadarChart.scss";
 
@@ -27,7 +28,8 @@ function PerformanceRadarChart() {
     (async () => {
       const { data, error } = await dataProvider.getUserPerformance(id);
       setError(error);
-      setChartData(data.data.map((performance) => ({ ...performance, kind: data.kind[performance.kind] })));
+      const userPerformance = new UserPerformance(data);
+      setChartData(userPerformance.data.map((performance) => ({ ...performance, kind: data.kind[performance.kind] })));
     })();
   }, [id]);
 
@@ -38,12 +40,12 @@ function PerformanceRadarChart() {
   return (
     <>
       {chartData && (
-        <ResponsiveContainer className="performanceRaderChart" width="100%" aspect={1.1}>
-          <RadarChart cx="50%" cy="50%" outerRadius={window?.innerWidth > 1440 ? "70%" : "50%"} data={chartData}>
+        <ResponsiveContainer className="performanceRadarChart" aspect={1.1}>
+          <RadarChart cx="50%" cy="50%" outerRadius={window?.innerWidth >= 1440 ? "65%" : "50%"} data={chartData}>
             <Radar name="Mike" dataKey="value" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
             <PolarAngleAxis
               dataKey="kind"
-              tick={{ fill: "#FFFFFF", fontSize: window?.innerWidth > 1440 ? "12px" : "10px" }}
+              tick={{ fill: "#FFFFFF", fontSize: window?.innerWidth >= 1440 ? "12px" : "10px" }}
               tickFormatter={translateKind}
             />
             <PolarGrid radialLines={false} />

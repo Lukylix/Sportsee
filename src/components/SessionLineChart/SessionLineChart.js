@@ -4,6 +4,7 @@ import dataProvider from "../../utils/dataProvider";
 import { LineChart, Line, ResponsiveContainer, XAxis, Tooltip, YAxis, Rectangle } from "recharts";
 
 import "./SessionLineChart.scss";
+import UserAverageSession from "../../utils/models/UserAverageSession";
 
 const labels = ["L", "M", "M", "J", "V", "S", "D"];
 
@@ -30,7 +31,8 @@ function SessionLineChart() {
     (async () => {
       const { data, error } = await dataProvider.getUserAverageSession(id);
       setError(error);
-      setChartData(data.sessions.map((session) => ({ ...session, day: labels[session.day - 1] })));
+      const userAverageSession = new UserAverageSession(data);
+      setChartData(userAverageSession.sessions.map((session) => ({ ...session, day: labels[session.day - 1] })));
     })();
   }, [id]);
 
@@ -43,8 +45,8 @@ function SessionLineChart() {
       <div className="sessionLineChart__header">
         <h3>Durée moyenne des sessions</h3>
       </div>
-      <ResponsiveContainer width="100%" aspect={1.1}>
-        <LineChart width={300} height={100} data={chartData}>
+      <ResponsiveContainer aspect={1.1}>
+        <LineChart data={chartData}>
           <XAxis
             dataKey="day"
             stroke="white"

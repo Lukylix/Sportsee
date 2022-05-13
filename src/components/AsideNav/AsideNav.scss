@@ -1,13 +1,13 @@
 #root > aside {
   background-color: black;
-  height: 100%;
-  min-height: calc(1024px - 90px);
+  height: calc(100vh - 89px);
+  min-height: calc(1024px - 89px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-
+  transform: translateY(-1px);
   > p {
     position: absolute;
     font-size: 12px;
