@@ -1,20 +1,27 @@
 #root > aside {
   background-color: black;
-  height: calc(100vh - 89px);
-  min-height: calc(1024px - 89px);
+  min-height: calc(100vh - 90px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-  transform: translateY(-1px);
   > p {
     position: absolute;
     font-size: 12px;
     width: max-content;
-    bottom: 150px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-90deg);
+    bottom: 60px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  // Prevents text and icons from overlapping 
+  &::after {
+    content: "Copyright, SportSee 2020";
+    opacity: 0;
+    top: 30px;
+    font-size: 12px;
+    writing-mode: vertical-rl;
   }
   ul {
     display: flex;

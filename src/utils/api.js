@@ -9,7 +9,6 @@ const port = process.env.REACT_APP_API_PORT;
  */
 async function getUser(id) {
   try {
-    console.log(`http://${host}:${port}/user/${id}`);
     const res = await axios.get(`http://${host}:${port}/user/${id}`);
     return { data: res.data.data, error: null };
   } catch (error) {

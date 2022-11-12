@@ -14,7 +14,7 @@ function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Accuiel</Link>
+            <Link to="/">Accueil</Link>
           </li>
           <li>
             <Link to="#">Profil</Link>

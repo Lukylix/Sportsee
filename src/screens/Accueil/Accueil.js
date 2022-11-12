@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import "./Accuiel.scss";
+import "./Accueil.scss";
 
 function Accuiel() {
   return (
-    <main id="accuielMain">
+    <main id="accueilMain">
       <Link className="btn" to="/dashboard/12">
         Dashboard Karl
       </Link>

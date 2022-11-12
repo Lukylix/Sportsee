@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import { ResponsiveContainer, PolarGrid, PolarAngleAxis, Radar, RadarChart } from "recharts";
 import UserPerformance from "../../utils/models/UserPerformance";
@@ -20,22 +20,22 @@ const translateKind = (kind) => {
 
 function PerformanceRadarChart() {
   const [chartData, setChartData] = useState();
-  const [error, setError] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
+    let mounted = true;
     (async () => {
       const { data, error } = await dataProvider.getUserPerformance(id);
-      setError(error);
+      if (!mounted) return;
+      if (error) return navigate({ pathname: "/error", search: `?${createSearchParams({ msg: error })}` });
       const userPerformance = new UserPerformance(data);
       setChartData(userPerformance.data.map((performance) => ({ ...performance, kind: data.kind[performance.kind] })));
     })();
-  }, [id]);
-
-  useEffect(() => {
-    if (error) navigate("/404");
-  }, [error, navigate]);
+    return () => {
+      mounted = false;
+    };
+  }, [id, navigate]);
 
   return (
     <>

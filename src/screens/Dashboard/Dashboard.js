@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import User from "../../utils/models/User";
 import ActivityBarChart from "../../components/ActivityBarChart";
@@ -17,7 +17,6 @@ import ScoreChart from "../../components/ScoreChart";
 function Dashboard() {
   const { id } = useParams();
   const [user, setUser] = useState();
-  const [error, setError] = useState();
   const navigate = useNavigate();
 
   const addCommaCalories = (value) => {
@@ -25,16 +24,17 @@ function Dashboard() {
   };
 
   useEffect(() => {
+    let mounted = true;
     (async () => {
       const { data, error } = await dataProvider.getUser(id);
+      if (!mounted) return;
+      if (error) return navigate({ pathname: "/error", search: `?${createSearchParams({ msg: error })}` });
       setUser(new User(data));
-      setError(error);
     })();
-  }, [id]);
-
-  useEffect(() => {
-    if (error) navigate("/404");
-  }, [error, navigate]);
+    return () => {
+      mounted = false;
+    };
+  }, [id, navigate]);
 
   return (
     <main>

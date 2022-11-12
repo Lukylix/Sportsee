@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import { LineChart, Line, ResponsiveContainer, XAxis, Tooltip, YAxis, Rectangle } from "recharts";
 
@@ -10,7 +10,18 @@ const labels = ["L", "M", "M", "J", "V", "S", "D"];
 
 const CustomCursor = ({ className, width, height, points: [{ x }] }) => {
   return (
-    <Rectangle className={className} fill="black" fillOpacity={0.1} x={x} y={0} width={width} height={height * 2} />
+    <Rectangle
+      className={className}
+      fill="black"
+      fillOpacity={0.1}
+      x={x}
+      //Starting from top
+      y={0}
+      //RectSurfaceWidth - SelectedDotX + XAxisPadding
+      width={width - x + 15}
+      //RectSurfaceHeight + XAxisMaxHeightEstimate
+      height={height + 50}
+    />
   );
 };
 
@@ -18,7 +29,6 @@ const formaterTooltip = (value) => [`${value} min`];
 
 function SessionLineChart() {
   const [chartData, setChartData] = useState([]);
-  const [error, setError] = useState();
   const [dataMax, setDataMax] = useState(0);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,17 +38,18 @@ function SessionLineChart() {
   }, [chartData]);
 
   useEffect(() => {
+    let mounted = true;
     (async () => {
       const { data, error } = await dataProvider.getUserAverageSession(id);
-      setError(error);
+      if (!mounted) return;
+      if (error) return navigate({ pathname: "/error", search: `?${createSearchParams({ msg: error })}` });
       const userAverageSession = new UserAverageSession(data);
       setChartData(userAverageSession.sessions.map((session) => ({ ...session, day: labels[session.day - 1] })));
     })();
-  }, [id]);
-
-  useEffect(() => {
-    if (error) navigate("/404");
-  }, [error, navigate]);
+    return () => {
+      mounted = false;
+    };
+  }, [id, navigate]);
 
   return (
     <div className="sessionLineChart">
@@ -47,14 +58,7 @@ function SessionLineChart() {
       </div>
       <ResponsiveContainer aspect={1.1}>
         <LineChart data={chartData}>
-          <XAxis
-            dataKey="day"
-            stroke="white"
-            tickLine={false}
-            axisLine={false}
-            padding={{ left: 15, right: 15 }}
-            allowDataOverflow={true}
-          />
+          <XAxis dataKey="day" stroke="white" tickLine={false} axisLine={false} padding={{ left: 15, right: 15 }} />
           <YAxis
             tickLine={false}
             axisLine={false}
@@ -69,7 +73,7 @@ function SessionLineChart() {
             labelStyle={{ display: "none" }}
             itemStyle={{ color: "black", fontSize: "12px" }}
           />
-          <Line type="natural" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} />
+          <Line type="natural" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} connectNulls={true} />
         </LineChart>
       </ResponsiveContainer>
     </div>

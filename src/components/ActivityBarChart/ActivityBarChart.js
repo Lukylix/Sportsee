@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import dataProvider from "../../utils/dataProvider";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
@@ -16,24 +16,24 @@ const formaterTooltip = (value, name) => {
 
 function ActivityBarChart() {
   const [chartData, setChartData] = useState([]);
-  const [error, setError] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
+    let mounted = true;
     (async () => {
       const { data, error } = await dataProvider.getUserActivity(id);
-      setError(error);
+      if (!mounted) return;
+      if (error) return navigate({ pathname: "/error", search: `?${createSearchParams({ msg: error })}` });
       const userActivity = new UserActivity(data);
       setChartData(
         userActivity.sessions.map((session) => ({ kilogram: session.kilogram, calories: session.calories }))
       );
     })();
-  }, [id]);
-
-  useEffect(() => {
-    if (error) navigate("/404");
-  }, [error, navigate]);
+    return () => {
+      mounted = false;
+    };
+  }, [id, navigate]);
 
   return (
     <div className="activityBarChart">

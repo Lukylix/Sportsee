@@ -7,7 +7,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
  */
 function handleNoData(data) {
   if (!data) {
-    return { error: "Can not find user", data: null };
+    return { error: "Cannot find user", data: null };
   }
   return { error: null, data };
 }
