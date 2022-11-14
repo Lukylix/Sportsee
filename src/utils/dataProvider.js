@@ -53,12 +53,12 @@ import mockedApi from "./mockedApi";
 
 /**
  * Retrieve data form api or mockedApi
- * @type {{getUser: getUser, getUserActivity: getUserActivity, getUserAverageSession: getUserAverageSession, getUserPerformance: getUserPerformance}}
+ * @type {{getUser: getUser, getUserActivity: getUserActivity, getUserAverageSession: getUserAverageSession, getUserPerformance: getUserPerformance}|undefined}
  */
 let dataProvider;
 
 if (process.env.REACT_APP_DATA_SOURCE === "mock") dataProvider = mockedApi;
 else if (process.env.REACT_APP_DATA_SOURCE === "api") dataProvider = api;
-else if (dataProvider === undefined) throw new Error("Data source invalid");
+else throw new Error("Data source invalid. (see .env file)");
 
 export default dataProvider;

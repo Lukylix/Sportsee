@@ -25,6 +25,11 @@ const CustomCursor = ({ className, width, height, points: [{ x }] }) => {
   );
 };
 
+/**
+ * Format the tooltip (Only see the value and its unit)
+ * @param {number|string} value
+ * @returns {[string]}
+ */
 const formaterTooltip = (value) => [`${value} min`];
 
 function SessionLineChart() {
@@ -73,7 +78,15 @@ function SessionLineChart() {
             labelStyle={{ display: "none" }}
             itemStyle={{ color: "black", fontSize: "12px" }}
           />
-          <Line type="natural" dataKey="sessionLength" stroke="white" strokeWidth={2} dot={false} connectNulls={true} />
+          <Line
+            type="natural"
+            dataKey="sessionLength"
+            stroke="white"
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ stroke: "white", strokeWidth: 7, strokeOpacity: 0.3 }}
+            connectNulls={true}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

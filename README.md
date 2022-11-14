@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# :chart_with_upwards_trend: SportSee - React application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-## Available Scripts
+#### Dependencies
+
+![React](https://img.shields.io/badge/React-^17.0.2-<COLOR>.svg)
+![React Router](https://img.shields.io/badge/React_Router-^6.2.2-<COLOR>.svg)
+![Recharts](https://img.shields.io/badge/Recharts-^2.1.9-<COLOR>.svg)
+![Sass](https://img.shields.io/badge/Sass-^1.49.9-<COLOR>.svg)
+![Axios](https://img.shields.io/badge/Axios-^0.26-<COLOR>.svg)
+
+#### Dev dependencies
+
+![Prettier](https://img.shields.io/badge/Prettier-^2.5.1-<COLOR>.svg)
+![Cross env](https://img.shields.io/badge/Cross_Env-^7.0.3-<COLOR>.svg)
+
+## :rocket: Running project
+
+### Prerequisite
+
+#### Code editor
+
+You will need a text editor to write your code. I recommend using [Visual Studio Code](https://code.visualstudio.com/) with the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension, although you can choose whichever one you prefer.
+
+#### Command Line
+
+Throughout this README, we will ask you to use various command-line interfaces (CLIs). You can type these commands into your system's default terminal:
+
+- Windows: Command Prompt or PowerShell or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+- macOS: Terminal
+- Linux: varies depending on distribution (e.g. GNOME Terminal, Konsole)
+
+Most code editors also come with an integrated terminal, which you can also use.
+
+##### Git
+
+[Git](https://git-scm.com/downloads) is a commonly-used version control system for source code.  
+Although having git is not strictly necessary to download the code on your computer its the recommended way to do so.  
+Git will also became handy later if you want to make changes to the code base.
+
+##### Node.js
+
+You need to install the [Node.js](https://nodejs.org/en/download/) runtime and its bundled npm package manager onto your system.  
+I recommend that you use the latest long-term support (LTS) version. The project was tested under the version **16.13.1**.
+
+Psss checkout Node Version Manger ([nvm](https://github.com/nvm-sh/nvm#installing-and-updating)) if you want to manage multiples version on your system.
+
+##### Yarn or npm
+
+I personaly use [Yarn](https://yarnpkg.com/getting-started/install) for my package manager.  
+But you can use npm, simply replace **yarn** with **npm** when typing the yarn commands.
+
+### Cloning the projects
+
+Within the directory of choice clone the following repository.
+
+#### With SSH
+
+`git clone git@github.com:Lukylix/LucasGarcia_12_04032022.git sport-see`
+
+If you want to use the api you can also clone the backend:
+
+`git clone git@github.com:OpenClassrooms-Student-Center/P9-front-end-dashboard.git sport-see-back`
+
+#### With HTTPS
+
+`git clone https://github.com/Lukylix/LucasGarcia_12_04032022.git sport-see`
+
+If you want to use the api you can also clone the backend:
+
+`git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git sport-see-back`
+
+### Installing the dependencies
+
+Moove into the previously cloned respositories and type:
+
+`yarn`
+
+### Configuration
+
+You must edit the **.env** file before running the project like so :
+
+#### Get mocked data
+
+**REACT_APP_API_HOST** and **REACT_APP_API_PORT** are optional in this configuration.
+
+```dotenv
+REACT_APP_DATA_SOURCE=mock
+```
+
+#### Get data from the API
+
+```dotenv
+REACT_APP_API_HOST=localhost
+REACT_APP_API_PORT=3000
+REACT_APP_DATA_SOURCE=api
+```
+
+## :building_construction: Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in the development mode.  
+Open [http://localhost:8000](http://localhost:8000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.  
 You may also see any lint errors in the console.
 
-### `npm test`
+### `yarn run build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.  
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes. s
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn run prettier`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This command formats all files supported by Prettier in the current directory and its subdirectories.
+It use **.prettierignore** file to ignore things that should not be formatted and **.prettierrc.json** for its styling configuration.

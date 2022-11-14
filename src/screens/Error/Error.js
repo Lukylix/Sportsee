@@ -8,7 +8,7 @@ function Error() {
 
   return (
     <main id="errorMain">
-      <h1>{`${msg}.` || "Something went wrong !"}</h1>
+      <h1>{msg ? `${msg}.` : "Something went wrong !"}</h1>
     </main>
   );
 }

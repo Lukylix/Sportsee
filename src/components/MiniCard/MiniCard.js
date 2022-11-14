@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import "./MiniCard.scss";
 
 function MiniCard({ icon, iconContainerStyle, title, legend }) {
@@ -13,5 +15,12 @@ function MiniCard({ icon, iconContainerStyle, title, legend }) {
     </div>
   );
 }
+
+MiniCard.propTypes = {
+  icon: PropTypes.element,
+  iconContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  title: PropTypes.string,
+  legend: PropTypes.string,
+};
 
 export default MiniCard;
