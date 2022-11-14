@@ -15,7 +15,7 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
   }
-  // Prevents text and icons from overlapping 
+  // Prevents text and icons from overlapping
   &::after {
     content: "Copyright, SportSee 2020";
     opacity: 0;
@@ -36,6 +36,37 @@
       border-radius: 15px;
       justify-content: center;
       align-items: center;
+    }
+  }
+}
+
+@media screen and(max-width: 1000px) {
+  #root > aside {
+    order: 2;
+    height: auto;
+    min-height: fit-content;
+    padding: 10px 0 84px 0;
+    nav {
+      position: fixed;
+      bottom: 0;
+      background-color: black;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      padding: 10px;
+    }
+    ul {
+      flex-direction: row;
+    }
+    > p {
+      writing-mode: unset;
+      transform: none;
+      position: relative;
+      bottom: unset;
+    }
+    &::after {
+      content: unset;
     }
   }
 }

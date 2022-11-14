@@ -51,3 +51,14 @@
     }
   }
 }
+
+@media screen and(max-width: 1000px) {
+  #dashboardMain #infos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas: "activity activity activity" "session performance score" "cards cards cards";
+    .miniCardContainer {
+      grid-template-rows: none;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
