@@ -62,3 +62,28 @@
     }
   }
 }
+
+@media screen and(max-width: 767px) {
+  #dashboardMain #infos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "activity activity" "session performance" "score none" "cards cards";
+    .miniCardContainer {
+      grid-template-rows: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media screen and(max-width: 550px) {
+  #dashboardMain {
+    padding: 40px 15px;
+    #infos {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "activity" "session" "performance" "score" "cards";
+      .miniCardContainer {
+        grid-template-rows: auto;
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  }
+}

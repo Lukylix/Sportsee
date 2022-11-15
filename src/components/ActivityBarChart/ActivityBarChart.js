@@ -5,6 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 
 import "./ActivityBarChart.scss";
 import UserActivity from "../../utils/models/UserActivity";
+import useViewport from "../../hooks/useViewport";
 
 const formaterTooltip = (value, name) => {
   const unitDic = {
@@ -18,6 +19,7 @@ function ActivityBarChart() {
   const [chartData, setChartData] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+  const { width } = useViewport();
 
   useEffect(() => {
     let mounted = true;
@@ -44,20 +46,27 @@ function ActivityBarChart() {
           <span className="dot dot--red"></span>Calories brûlées (kCal)
         </p>
       </div>
-      <ResponsiveContainer aspect={4}>
+      <ResponsiveContainer aspect={width >= 550 ? 4 : 2}>
         <BarChart
           width={500}
           height={300}
           data={chartData}
           margin={{
             top: 5,
-            right: 25,
+            right: width >= 1000 ? 25 : 0,
             bottom: 5,
           }}
         >
           <CartesianGrid vertical={false} />
-          <XAxis domain={[1, chartData.length]} axisLine={false} tickLine={false} tickMargin={15} stroke="#9B9EAC" />
-          <YAxis orientation="right" tickCount={3} axisLine={false} tickLine={false} tickMargin={45} stroke="#9B9EAC" />
+          <XAxis tickFormatter={(n) => n + 1} axisLine={false} tickLine={false} tickMargin={15} stroke="#9B9EAC" />
+          <YAxis
+            orientation="right"
+            tickCount={3}
+            axisLine={false}
+            tickLine={false}
+            tickMargin={width >= 1000 ? 45 : 10}
+            stroke="#9B9EAC"
+          />
           <Tooltip
             formatter={formaterTooltip}
             labelStyle={{ display: "none" }}

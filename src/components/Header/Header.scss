@@ -11,6 +11,29 @@
     width: 1000%;
     margin-left: 8%;
     font-size: 24px;
+    #nav__checkbox {
+      display: none;
+      + label {
+        display: none;
+        position: absolute;
+        right: 30px;
+        bottom: 0px;
+        transform: translateY(50%);
+        .nav__icon {
+          height: 60px;
+        }
+      }
+      &:not(:checked) + label {
+        .nav__icon--cross {
+          display: none;
+        }
+      }
+      &:checked + label {
+        .nav__icon--hamburger {
+          display: none;
+        }
+      }
+    }
     ul {
       display: flex;
       justify-content: space-between;
@@ -19,5 +42,33 @@
 
   h1 {
     height: 60px;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  #root > header {
+    padding: 0 0 0 50px;
+    nav {
+      #nav__checkbox {
+        + label {
+          display: block;
+        }
+        &:checked + label + ul {
+          display: block;
+        }
+      }
+      ul {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(90px / 2);
+        padding: 20px;
+        border-bottom-left-radius: 10px;
+        flex-direction: column;
+        justify-content: center;
+        background-color: black;
+        z-index: 10;
+      }
+    }
   }
 }

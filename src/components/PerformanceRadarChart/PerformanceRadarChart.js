@@ -41,13 +41,9 @@ function PerformanceRadarChart() {
     <>
       {chartData && (
         <ResponsiveContainer className="performanceRadarChart" aspect={1.1}>
-          <RadarChart cx="50%" cy="50%" outerRadius={window?.innerWidth >= 1440 ? "65%" : "50%"} data={chartData}>
+          <RadarChart cx="50%" cy="50%" margin={{ right: 50, left: 50 }} data={chartData}>
             <Radar name="Mike" dataKey="value" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
-            <PolarAngleAxis
-              dataKey="kind"
-              tick={{ fill: "#FFFFFF", fontSize: window?.innerWidth >= 1440 ? "12px" : "10px" }}
-              tickFormatter={translateKind}
-            />
+            <PolarAngleAxis dataKey="kind" tick={{ fill: "#FFFFFF", fontSize: "12px" }} tickFormatter={translateKind} />
             <PolarGrid radialLines={false} />
           </RadarChart>
         </ResponsiveContainer>
