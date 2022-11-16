@@ -1,20 +1,37 @@
 import axios from "axios";
 
-const host = process.env.REACT_APP_API_HOST;
-const port = process.env.REACT_APP_API_PORT;
+const host = process.env.REACT_APP_API_HOST || "localhost";
+const port = process.env.REACT_APP_API_PORT || 3000;
+
+const client = axios.create({
+  baseURL: `http://${host}:${port}`,
+});
+
+/**
+ * Create an handled api endpoint.
+ * @param {function} func a async function with axios call inside it
+ * @returns {function(...args): {data: any|null, error: null|string}} an api endpoint (async function with error handling accepting parameters)
+ */
+const createApiCall =
+  (func) =>
+  async (...args) => {
+    try {
+      const res = await func(...args);
+      return { data: res.data.data, error: null };
+    } catch (error) {
+      return {
+        data: null,
+        error: error.message,
+      };
+    }
+  };
+
 /**
  * Retrieve the main user info (first name, last name, today score, ect...)
  * @param {number} id - user id
  * @returns {{error: null|string, data: {userId: number, userInfos: {firstName: string, lastName: string, age:number}, todayScore: number, keyData: {calorieCount: number, proteinCount: number, carbohydrateCount:number lipidCount:number}}|null}} user
  */
-async function getUser(id) {
-  try {
-    const res = await axios.get(`http://${host}:${port}/user/${id}`);
-    return { data: res.data.data, error: null };
-  } catch (error) {
-    return { data: null, error: error.message };
-  }
-}
+const getUser = createApiCall(async (id) => await client.get(`/user/${id}`));
 
 /**
  * @typedef SessionsActivity
@@ -29,14 +46,7 @@ async function getUser(id) {
  * @param {number} id
  * @returns {{error: null|string, data:{userId: number, sessions: SessionsActivity[]}|null}}
  */
-async function getUserActivity(id) {
-  try {
-    const res = await axios.get(`http://${host}:${port}/user/${id}/activity`);
-    return { data: res.data.data, error: null };
-  } catch (error) {
-    return { data: null, error: error.message };
-  }
-}
+const getUserActivity = createApiCall(async (id) => await client.get(`/user/${id}/activity`));
 
 /**
  * @typedef SessionsAverage
@@ -50,14 +60,7 @@ async function getUserActivity(id) {
  * @param {number} id
  * @returns {{error: null | string, data:{userId: number, sessions: SessionsAverage[]}|null}}
  */
-async function getUserAverageSession(id) {
-  try {
-    const res = await axios.get(`http://${host}:${port}/user/${id}/average-sessions`);
-    return { data: res.data.data, error: null };
-  } catch (error) {
-    return { data: null, error: error.message };
-  }
-}
+const getUserAverageSession = createApiCall(async (id) => await client.get(`/user/${id}/average-sessions`));
 
 /**
  * @typedef Performance
@@ -71,14 +74,7 @@ async function getUserAverageSession(id) {
  * @param {number} id
  * @returns {{error: null|string, data:{userId: number, kind: Object.<number, string>, data: Performance[]}|null}}
  */
-async function getUserPerformance(id) {
-  try {
-    const res = await axios.get(`http://${host}:${port}/user/${id}/performance`);
-    return { data: res.data.data, error: null };
-  } catch (error) {
-    return { data: null, error: error.message };
-  }
-}
+const getUserPerformance = createApiCall(async (id) => await client.get(`/user/${id}/performance`));
 
 const api = {
   getUser,
