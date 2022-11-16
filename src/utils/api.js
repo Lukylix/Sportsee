@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const host = process.env.REACT_APP_API_HOST || "localhost";
-const port = process.env.REACT_APP_API_PORT || 3000;
+const host = import.meta.env.VITE_API_HOST || "localhost";
+const port = import.meta.env.VITE_API_PORT || 3000;
 
 const client = axios.create({
   baseURL: `http://${host}:${port}`,

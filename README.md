@@ -9,11 +9,13 @@
 ![Recharts](https://img.shields.io/badge/Recharts-^2.1.9-<COLOR>.svg)
 ![Sass](https://img.shields.io/badge/Sass-^1.49.9-<COLOR>.svg)
 ![Axios](https://img.shields.io/badge/Axios-^0.26-<COLOR>.svg)
+![Vite](https://img.shields.io/badge/Vite-^3.2.4-<COLOR>.svg)
+![Vite Plugin SVGR](https://img.shields.io/badge/Vite_Plugin_SVGR-^2.2.2-<COLOR>.svg)
+![Vite Plugin React](https://img.shields.io/badge/Vite_Plugin_React-^2.2.0-<COLOR>.svg)
 
 #### Dev dependencies
 
 ![Prettier](https://img.shields.io/badge/Prettier-^2.5.1-<COLOR>.svg)
-![Cross env](https://img.shields.io/badge/Cross_Env-^7.0.3-<COLOR>.svg)
 
 ## :rocket: Running project
 
@@ -83,18 +85,18 @@ You must edit the **.env** file before running the project like so :
 
 #### Get mocked data
 
-**REACT_APP_API_HOST** and **REACT_APP_API_PORT** are optional in this configuration.
+**VITE_API_HOST** and **VITE_API_PORT** are optional in this configuration.
 
 ```dotenv
-REACT_APP_DATA_SOURCE=mock
+VITE_DATA_SOURCE=mock
 ```
 
 #### Get data from the API
 
 ```dotenv
-REACT_APP_API_HOST=localhost
-REACT_APP_API_PORT=3000
-REACT_APP_DATA_SOURCE=api
+VITE_API_HOST=localhost
+VITE_API_PORT=3000
+VITE_DATA_SOURCE=api
 ```
 
 ## :building_construction: Available Scripts
@@ -117,7 +119,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes. s
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about [deployment](https://vitejs.dev/guide/build.html) for more information.
+
+### `yarn run serve`
+
+This command start a web server with the `build` folder as the root directory.
 
 ### `yarn run prettier`
 

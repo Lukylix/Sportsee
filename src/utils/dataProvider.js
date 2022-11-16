@@ -57,8 +57,8 @@ import mockedApi from "./mockedApi";
  */
 let dataProvider;
 
-if (process.env.REACT_APP_DATA_SOURCE === "mock") dataProvider = mockedApi;
-else if (process.env.REACT_APP_DATA_SOURCE === "api") dataProvider = api;
+if (import.meta.env.VITE_DATA_SOURCE === "mock") dataProvider = mockedApi;
+else if (import.meta.env.VITE_DATA_SOURCE === "api") dataProvider = api;
 else throw new Error("Data source invalid. (see .env file)");
 
 export default dataProvider;
