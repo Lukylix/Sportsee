@@ -6,6 +6,11 @@ import UserPerformance from "../../utils/models/UserPerformance";
 
 import "./PerformanceRadarChart.scss";
 
+/**
+ * Transalate a kind property into French
+ * @param {string} kind
+ * @return {string}
+ */
 const translateKind = (kind) => {
   const dicKind = {
     cardio: "Cardio",
@@ -18,6 +23,12 @@ const translateKind = (kind) => {
   return dicKind[kind];
 };
 
+/**
+ * User performance radar chart component.
+ * Performance are displayed per kind.
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function PerformanceRadarChart() {
   const [chartData, setChartData] = useState();
   const { id } = useParams();

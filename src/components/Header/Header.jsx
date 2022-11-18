@@ -6,6 +6,12 @@ import { ReactComponent as Hamburger } from "../../assets/hamburger.svg";
 
 import "./Header.scss";
 
+/**
+ * Header component containing a logo
+ * and a responsive navigation.
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function Header() {
   return (
     <header>

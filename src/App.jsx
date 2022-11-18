@@ -9,6 +9,13 @@ import Error from "./screens/Error";
 
 import "./App.scss";
 
+/**
+ * This component represent the app as a whole.
+ * It contains providers, routes and components
+ * that will be present on all pages.
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function App() {
   return (
     <ViewportProvider>

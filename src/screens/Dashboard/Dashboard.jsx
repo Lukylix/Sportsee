@@ -15,7 +15,7 @@ import "./Dashboard.scss";
 import ScoreChart from "../../components/ScoreChart";
 
 /**
- * Add a comma every 3 digits
+ * Add a comma every 3 digits starting from the end.
  * @param {number} value
  * @returns {string}
  */
@@ -23,6 +23,11 @@ const addCommaCalories = (value) => {
   return value ? value.toString().replace(/(?=(\d{3})+(?!\d))/g, ",") : "";
 };
 
+/**
+ * The user dashboard page.
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function Dashboard() {
   const { id } = useParams();
   const [user, setUser] = useState();

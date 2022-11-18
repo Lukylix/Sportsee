@@ -8,7 +8,18 @@ import UserAverageSession from "../../utils/models/UserAverageSession";
 
 const labels = ["L", "M", "M", "J", "V", "S", "D"];
 
-const CustomCursor = ({ className, width, height, points: [{ x }] }) => {
+/**
+ * Darken the line chart background
+ * starting at the selected point.
+ * @type {React.FC}
+ * @param {object} props - The CustomCursor props
+ * @param {string} props.className
+ * @param {number} props.width - the container (graph) width
+ * @param {number} props.height - the container (graph) height
+ * @param {[{x:number}]} props.points - the selected point cordinate
+ * @return {React.ReactElement}
+ */
+function CustomCursor({ className, width, height, points: [{ x }] }) {
   return (
     <Rectangle
       className={className}
@@ -23,7 +34,7 @@ const CustomCursor = ({ className, width, height, points: [{ x }] }) => {
       height={height + 50}
     />
   );
-};
+}
 
 /**
  * Format the tooltip (Only see the value and its unit)
@@ -32,6 +43,12 @@ const CustomCursor = ({ className, width, height, points: [{ x }] }) => {
  */
 const formaterTooltip = (value) => [`${value} min`];
 
+/**
+ * Daily user sessions line chart
+ * with title and labels
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function SessionLineChart() {
   const [chartData, setChartData] = useState([]);
   const [dataMax, setDataMax] = useState(0);

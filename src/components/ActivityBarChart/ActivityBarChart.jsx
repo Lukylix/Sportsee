@@ -7,6 +7,12 @@ import "./ActivityBarChart.scss";
 import UserActivity from "../../utils/models/UserActivity";
 import useViewport from "../../hooks/useViewport";
 
+/**
+ * Format the tooltip (Only see the value and its unit)
+ * @param {number|string} value
+ * @param {string} name - Property name
+ * @return {[string]}
+ */
 const formaterTooltip = (value, name) => {
   const unitDic = {
     kilogram: "kg",
@@ -15,6 +21,12 @@ const formaterTooltip = (value, name) => {
   return [`${value}${unitDic[name]}`];
 };
 
+/**
+ * User activity graph component with its title, legends
+ * and bars chart (one bar for kilograms and one for calories)
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function ActivityBarChart() {
   const [chartData, setChartData] = useState([]);
   const { id } = useParams();

@@ -3,6 +3,14 @@ import PropTypes from "prop-types";
 
 import "./ScoreChart.scss";
 
+/**
+ * User score radial chart component.
+ * Show the user score in percent.
+ * @type {React.FC}
+ * @param {object} props - The ScoreChart properties
+ * @param {number} props.score - The user score between 0 and 1.
+ * @return {React.ReactElement}
+ */
 function ScoreChart({ score }) {
   const chartData = [{ score: score * 100, fill: "#FF0000" }];
   return (

@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 
 import "./Accueil.scss";
 
-function Accuiel() {
+/**
+ * The main page.
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
+function Accueil() {
   return (
     <main id="accueilMain">
       <Link className="btn" to="/dashboard/12">
@@ -15,4 +20,4 @@ function Accuiel() {
   );
 }
 
-export default Accuiel;
+export default Accueil;

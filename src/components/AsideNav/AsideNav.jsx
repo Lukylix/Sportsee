@@ -7,6 +7,11 @@ import { ReactComponent as Dumbbells } from "../../assets/dumbbells.svg";
 
 import "./AsideNav.scss";
 
+/**
+ * Aside navigation component with its icons, links and copyright
+ * @type {React.FC}
+ * @return {React.ReactElement}
+ */
 function AsideNav() {
   return (
     <aside>
