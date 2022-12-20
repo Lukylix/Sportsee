@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and(max-width: 1439px) {
+@media screen and (max-width: 1439px) {
   #dashboardMain {
     padding: 40px;
     #infos {
@@ -52,7 +52,7 @@
   }
 }
 
-@media screen and(max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   #dashboardMain #infos {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas: "activity activity activity" "session performance score" "cards cards cards";
@@ -63,7 +63,7 @@
   }
 }
 
-@media screen and(max-width: 767px) {
+@media screen and (max-width: 767px) {
   #dashboardMain #infos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas: "activity activity" "session performance" "score none" "cards cards";
@@ -74,7 +74,7 @@
   }
 }
 
-@media screen and(max-width: 550px) {
+@media screen and (max-width: 550px) {
   #dashboardMain {
     padding: 40px 15px;
     #infos {
